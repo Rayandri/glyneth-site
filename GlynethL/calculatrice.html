@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Calculatrice</title>
+    <script src = 'js/operation.js'></script>
+    <link rel=stylesheet href="css/style.css"></link>
+</head>
+<body>
+    <div id="form">
+        <form id="calculatrice">
+            <input type="number" id="number1" placeholder="Choose first number" required />
+            <br></br>
+            <button type="button" onclick="operation('+')"> + </button>
+            <button type="button" onclick="operation('-')"> - </button>
+            <button type="button" onclick="operation('*')"> x </button>
+            <br></br>
+            <input type="number" id="number2" placeholder="Choose second number" required />
+            <br></br>
+            <button type="button" onclick="calculate()" > Calculate </button>
+            <br></br>
+            <div id="result"> Result :</div>
+        </form>
+    </div>
+</body>
