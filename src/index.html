@@ -1,15 +1,79 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="night">
 <head>
   <meta charset="utf-8">
-  <title>Titre de la page</title>
-  <link href="css/output.css" rel="stylesheet"></link>
+  <title>CV - Glyneth Lawrence</title>
+  <link href="css/outputdaisy.css" rel="stylesheet"></link>  
 </head>
+
 <body>
-  <h1 class="text-3xl font-bold underline bg-red-300">Hello world</h1>
-  <!-- Un commentaire -->
-  <p>Ceci est un paragraphe, contenant un lien hypertexte vers une autre page
-    <a href="https://www.google.com" target="_blank">Page de google</a>
-  </p>
+
+  <button data-target="contact" class="btn btn-primary">Contact</button>
+  <button data-target="langues" class="btn btn-primary">Langues</button>
+  <button data-target="competences" class="btn btn-primary">Compétences</button>
+  <button data-target="interets" class="btn btn-primary">Intérêts</button>
+
+
+  <div class="avatar">
+    <div class="w-24 rounded-full">
+      <img src="static/avatar.png">
+    </div>
+  </div>
+
+  <div class="paragraphe hidden" id="contact">
+    <h1 class="text-2xl font-bold underline">Contact</h1>
+    <ul class="list-disc pl-5">
+      <li>Mail : glyneth.lawrence@gmail.com</li>
+      <li>LinkedIn : <a class="link link-hover" href="https://www.linkedin.com/in/glyneth-lawrence" >glyneth-lawrence</a></li>
+      <li>Paris</li>
+      <li>Permis B</li>
+    </ul>
+  </div>
+
+  <br>
+
+  <div id="langues">
+    <h2 class="text-2xl font-bold underline">Langues</h2>
+    <dl>
+      <dt>Français</dt>
+      <dd><progress class="progress progress-info w-56" value="100" max="100"></progress></dd>
+
+      <dt>Anglais</dt>
+      <dd><progress class="progress progress-info w-56" value="90" max="100"></progress></dd>
+
+      <dt>Allemand</dt>
+      <dd><progress class="progress progress-info w-56" value="44" max="100"></progress></dd>
+
+      <dt>Portugais</dt>
+      <dd><progress class="progress progress-info w-56" value="20" max="100"></progress></dd>
+    </dl>
+  </div>
+
+  <br>
+
+  <div id="competences">
+    <h3 class="text-2xl font-bold underline">Compétences</h3>
+    <ul class="list-disc pl-5">
+      <li>Bases en réseaux</li>
+      <li>Bases en linux</li>
+      <li>Langage de programmation</li>
+      <li>Développement Web</li>
+    </ul>
+  </div>
+
+  <br>
+
+  <div id="interets">
+    <h3 class="text-2xl font-bold underline">Intérets</h3>
+    <ul class="list-disc pl-5">
+      <li>Musique</li>
+      <li>Danse</li>
+      <li>Voyages</li>
+      <li>Jeu d'échecs</li>
+    </ul>
+  </div>
+
 </body>
-</htm
+
+<script src="js/main.js"></script>
+</html>
