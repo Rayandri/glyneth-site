@@ -12,3 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
   
+
+document.getElementById("avatar-toggle").addEventListener("click", () => {
+  const menu = document.getElementById("menu-buttons");
+  menu.hidden = !menu.hidden;
+});
