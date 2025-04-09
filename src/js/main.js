@@ -12,8 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
   
-
-document.getElementById("avatar-toggle").addEventListener("click", () => {
-  const menu = document.getElementById("menu-buttons");
-  menu.hidden = !menu.hidden;
-});
+document.getElementById('avatar').addEventListener('click', function () {
+    const buttons = document.querySelectorAll('button[data-target]');
+    buttons.forEach(button => {
+      button.classList.toggle('hidden');
+    });
+  });
