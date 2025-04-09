@@ -18,3 +18,4 @@ document.getElementById('avatar').addEventListener('click', function () {
       button.classList.toggle('hidden');
     });
   });
+
