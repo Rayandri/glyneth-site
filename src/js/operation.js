@@ -1,26 +1,22 @@
-let operation_type="";
+let expression = '';
 
-function operation(op) {
-    operation_type = op;
+function appendValue(val) {
+  expression += val;
+  document.getElementById('display').textContent = expression;
+}
+
+function clearDisplay() {
+  expression = '';
+  document.getElementById('display').textContent = '0';
 }
 
 function calculate() {
-    const a = parseFloat(document.getElementById('number1').value);
-    const b = parseFloat(document.getElementById('number2').value);
-    let result;
-
-    switch(operation_type) {
-        case '+':
-            result = a + b;
-            break;
-        case '-':
-            result = a - b;
-            break;
-        case '*':
-            result = a * b;
-            break;
-        default:
-            result = "Retry";
-    }
-    document.getElementById('result').innerText = "Voici le résultat : " + result;
+  try {
+    const result = eval(expression);
+    expression = result.toString();
+    document.getElementById('display').textContent = result;
+  } catch (e) {
+    document.getElementById('display').textContent = 'Erreur';
+    expression = '';
+  }
 }
