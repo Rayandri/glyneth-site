@@ -3,13 +3,23 @@
 const questions = [
     {
         question : "Quel pays n'existe pas ?",
-        option : ["Kirghizistan", "Malawi", "Nouvelle Papouasie", "Sainte Lucie"],
+        options : ["Kirghizistan", "Nouvelle Papouasie", "Malawi", "Sainte Lucie"],
         reponse : "Nouvelle Papouasie"
     }, 
     {
         question : "Sydney est la capitale d'Australie ?", 
-        option : ["Vrai", "Faux"],
+        options : ["Vrai", "Faux"],
         reponse : "Faux"
+    },
+    {
+        question : "Quelle est la ville la plus peuplée du monde ?",
+        options : ["Tokyo, Japon", "Bombay, Inde", "Shanghai, Chine", "Sao Paulo, Brésil"],
+        reponse : "Tokyo, Japon"
+    },
+    {
+        question : "Êtes-vous un robot ?",
+        options : ["Oui", "Non"],
+        reponse : "Non"
     }]
 
 
@@ -27,12 +37,17 @@ window.onload = () => {
   
       const label = document.createElement("label");
       label.className = "label";
-      label.innerHTML = `<span class="label-text">${q.question}</span>`;
+      label.innerHTML = `
+        <span class="label-text">${q.question}</span>
+        `;
       div.appendChild(label);
-  
+      div.classList.add("space-y-2", "mb-6", "p-2", "bg-base-300");
+
+
+
       q.options.forEach(option => {
         const opt = document.createElement("label");
-        opt.className = "label cursor-pointer";
+        opt.className = "label cursor-pointer flex items-center gap-2";
         opt.innerHTML = `
           <input type="radio" name="question${index}" value="${option}" class="radio radio-secondary" />
           <span class="label-text ml-2">${option}</span>
@@ -43,13 +58,13 @@ window.onload = () => {
       container.appendChild(div);
     });
   
-    // Gestion du bouton valider
+    // Bouton valider
     document.getElementById("valider").addEventListener("click", () => {
       let score = 0;
   
       questions.forEach((q, index) => {
         const selected = document.querySelector(`input[name="question${index}"]:checked`);
-        if (selected && selected.value === q.answer) {
+        if (selected && selected.value === q.reponse) {
           score++;
         }
       });
@@ -68,11 +83,14 @@ window.onload = () => {
   
     // Bouton pour accéder au formulaire si 100%
     boutonFormulaire.addEventListener("click", () => {
-      document.getElementById("quiz").classList.add("hidden");
+      document.getElementById("questionnaire").classList.add("hidden");
       formulaire.classList.remove("hidden");
     });
   };
+ 
   
+
+
 
 //formulaire
 
@@ -82,7 +100,7 @@ document.getElementById('envoyer-btn').addEventListener('click', function (event
     if (validateForm()) {
         const prenom = document.getElementById('prenom').value.trim();
         document.getElementById('bonjour-message').innerText = `Bonjour ${prenom} !`;
-        document.getElementById('my_modal_5').showModal();
+        document.getElementById('my_modal').showModal();
     }
 });
   
@@ -118,7 +136,7 @@ document.querySelector('button.btn').addEventListener('click', function (event) 
     event.preventDefault(); // éviter l'envoi par défaut
 
     if (validateForm()) {
-      my_modal_5.showModal(); // afficher le modal si tout est OK
+      my_modal.showModal(); // afficher le modal si tout est OK
     }
 });
 

@@ -7,7 +7,7 @@
 </head>
 <body>
 
-  <div id="questionnaire" class="flex items-center justify-center min-h-screen">
+  <div id="questionnaire" class="flex items-center justify-center pt-5 pb-20">
     <div class="card w-full max-w-md bg-base-300 shadow-xl p-6 space-y-4">
       <h2 class="text-xl font-bold text-center">Répondez aux questions</h2>
       <div id="questions-container" class="space-y-4"></div>
@@ -18,7 +18,7 @@
   </div>
   
   <div id="formulaire" class="hidden">
-    <div class="flex items-center justify-center min-h-screen">
+    <div class="flex items-center justify-center min-h-screen pb-20">
       <fieldset class="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box">
         <h1 class="text-2xl underline text-center">Formulaire de contact</h1>
         <br>
@@ -42,8 +42,8 @@
           <textarea id="message" class="textarea textarea-bordered h-32 w-full resize-none" placeholder="Je vous contacte pour..."></textarea>
         </label>
         <br>
-        <button id="-btn" class="btn btn-secondary" type="button">Envoyer</button>
-        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+        <button id="envoyer-btn" class="btn btn-secondary" type="button">Envoyer</button>
+        <dialog id="my_modal" class="modal modal-bottom sm:modal-middle">
           <div class="modal-box">
             <h3 id="bonjour-message" class="text-xl font-bold text-center"></h3>
             <p class="py-4 text-lg">J'ai bien reçu votre contact, à bientôt !</p>
