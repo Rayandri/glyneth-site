@@ -2,26 +2,21 @@
 
 const questions = [
     {
-        question : "Quel pays n'existe pas ?",
-        options : ["Kirghizistan", "Nouvelle Papouasie", "Malawi", "Sainte Lucie"],
-        reponse : "Nouvelle Papouasie"
+        qlabel : "Quel pays n'existe pas ?", qid : 1,
+        reponses : [{rid : 1, option : "Kirghizistan"}, {rid : 2, option : "Nouvelle Papouasie"}, {rid : 3, option : "Malawi"}, {rid : 4, option : "Sainte Lucie"}],
     }, 
     {
-        question : "Sydney est la capitale d'Australie ?", 
-        options : ["Vrai", "Faux"],
-        reponse : "Faux"
+        qlabel : "Sydney est la capitale d'Australie ?", qid : 2,
+        reponses : [{rid : 1, rlabel : "Vrai"}, {rid : 2, rlabel : "Faux"}],
     },
     {
-        question : "Quelle est la ville la plus peuplée du monde ?",
-        options : ["Tokyo, Japon", "Bombay, Inde", "Shanghai, Chine", "Sao Paulo, Brésil"],
-        reponse : "Tokyo, Japon"
+        qlabel : "Quelle est la ville la plus peuplée du monde ?", qid : 3,
+        reponses: [{rid : 1, rlabel : "Tokyo, Japon"}, {id : 2, rlabel : "Bombay, Inde"}, {id : 3, rlabel : "Shanghai, Chine"}, {id : 4, rlabel : "Sao Paulo, Brésil"}],
     },
     {
-        question : "Êtes-vous un robot ?",
-        options : ["Oui", "Non"],
-        reponse : "Non"
+        qlabel : "Êtes-vous un robot ?", qid : 4,
+        reponses : [{id : 1, rlabel : "Oui"}, {id : 2, rlabel : "Non"}],
     }]
-
 
   
 window.onload = () => {
@@ -29,6 +24,7 @@ window.onload = () => {
     const resultat = document.getElementById("resultat");
     const boutonFormulaire = document.getElementById("acces-formulaire");
     const formulaire = document.getElementById("formulaire");
+    const quiz = document.getElementById("questionnaire");
   
     // Affichage des questions
     questions.forEach((q, index) => {
@@ -37,21 +33,26 @@ window.onload = () => {
   
       const label = document.createElement("label");
       label.className = "label";
-      label.innerHTML = `
-        <span class="label-text">${q.question}</span>
-        `;
+      label.textContent = q.q;
       div.appendChild(label);
       div.classList.add("space-y-2", "mb-6", "p-2", "bg-base-300");
 
-
-
-      q.options.forEach(option => {
+      Object.keys(q.options).forEach(key => {
         const opt = document.createElement("label");
         opt.className = "label cursor-pointer flex items-center gap-2";
-        opt.innerHTML = `
-          <input type="radio" name="question${index}" value="${option}" class="radio radio-secondary" />
-          <span class="label-text ml-2">${option}</span>
-        `;
+        
+        const input = document.createElement("input")
+        input.type = "radio";
+        input.name = `question${index}`;
+        input.value = key;
+        input.className = "radio radio-secondary";
+
+        const span = document.createElement("span");
+        span.className = "label-text";
+        span.textContent = q.options[key];
+
+        opt.appendChild(input);
+        opt.appendChild(span)
         div.appendChild(opt);
       });
   
@@ -80,63 +81,4 @@ window.onload = () => {
         boutonFormulaire.classList.add("hidden");
       }
     });
-  
-    // Bouton pour accéder au formulaire si 100%
-    boutonFormulaire.addEventListener("click", () => {
-      document.getElementById("questionnaire").classList.add("hidden");
-      formulaire.classList.remove("hidden");
-    });
-  };
- 
-  
-
-
-
-//formulaire
-
-document.getElementById('envoyer-btn').addEventListener('click', function (event) {
-    event.preventDefault();
-  
-    if (validateForm()) {
-        const prenom = document.getElementById('prenom').value.trim();
-        document.getElementById('bonjour-message').innerText = `Bonjour ${prenom} !`;
-        document.getElementById('my_modal').showModal();
-    }
-});
-  
-function validateForm() {
-    const nom = document.getElementById('nom').value.trim();
-    const prenom = document.getElementById('prenom').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-
-    if (!nom || !prenom || !email || !message) {
-        document.getElementById('toast-message').innerText = "Merci de remplir tous les champs avant d'envoyer.";
-        const toast = document.getElementById('error-toast');
-        toast.classList.remove('hidden');
-        setTimeout(() => toast.classList.add('hidden'), 3000);
-        return false;
-    }
-
-    // Simple validation d'email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        document.getElementById('toast-message').innerText = "L'adresse e-mail n'est pas valide.";
-        const toast = document.getElementById('error-toast');
-        toast.classList.remove('hidden');
-        setTimeout(() => toast.classList.add('hidden'), 3000);
-        
-      return false;
-    }
-
-    return true;
-}
-
-document.querySelector('button.btn').addEventListener('click', function (event) {
-    event.preventDefault(); // éviter l'envoi par défaut
-
-    if (validateForm()) {
-      my_modal.showModal(); // afficher le modal si tout est OK
-    }
-});
-
+};
