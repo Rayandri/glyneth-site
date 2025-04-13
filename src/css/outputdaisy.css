@@ -1998,26 +1998,8 @@
   .w-96 {
     width: calc(var(--spacing) * 96);
   }
-  .w-\[2rem\] {
-    width: 2rem;
-  }
-  .w-\[5px\] {
-    width: 5px;
-  }
-  .w-\[6rem\] {
-    width: 6rem;
-  }
-  .w-\[10rem\] {
-    width: 10rem;
-  }
   .w-\[13rem\] {
     width: 13rem;
-  }
-  .w-\[15rem\] {
-    width: 15rem;
-  }
-  .w-\[300px\] {
-    width: 300px;
   }
   .w-full {
     width: 100%;
