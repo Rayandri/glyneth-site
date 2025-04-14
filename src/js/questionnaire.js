@@ -1,29 +1,29 @@
 const questions = [
   {
-    qlabel: "Quel pays n'existe pas ?", qid: 1,
+    qlabel: "Qui êtes-vous ?", qid: 1,
     reponses: [
-      {rid: 1, option: "Kirghizistan"},
-      {rid: 2, option: "Nouvelle Papouasie"},
-      {rid: 3, option: "Malawi"},
-      {rid: 4, option: "Sainte Lucie"}
+      {rid: 1, rlabel: "Un particulier"},
+      {rid: 2, rlabel: "Une entreprise"},
+      {rid: 3, rlabel: "Une association"},
+      {rid: 4, rlabel: "Une administration publique"}
     ],
     reponse: "Q1.r2"
   },
   {
-    qlabel: "Sydney est la capitale d'Australie ?", qid: 2,
+    qlabel: "Travaillez-vous dans le secteur de l'informatique ?", qid: 2,
     reponses: [
-      {rid: 1, rlabel: "Vrai"},
-      {rid: 2, rlabel: "Faux"}
+      {rid: 1, rlabel: "Oui"},
+      {rid: 2, rlabel: "Non"}
     ],
-    reponse: "Q2.r2"
+    reponse: "Q2.r1"
   },
   {
-    qlabel: "Quelle est la ville la plus peuplée du monde ?", qid: 3,
+    qlabel: "Où êtes-vous domiciliés ?", qid: 3,
     reponses: [
-      {rid: 1, rlabel: "Tokyo, Japon"},
-      {id: 2, rlabel: "Bombay, Inde"},
-      {id: 3, rlabel: "Shanghai, Chine"},
-      {id: 4, rlabel: "Sao Paulo, Brésil"}
+      {rid: 1, rlabel: "Région parisienne"},
+      {id: 2, rlabel: "France métropolitaine"},
+      {id: 3, rlabel: "Royaume-Uni"},
+      {id: 4, rlabel: "Étranger"}
     ],
     reponse: "Q3.r1"
   },
@@ -36,7 +36,8 @@ const questions = [
     reponse: "Q4.r2"
   }
 ];
-  
+
+
 window.onload = () => {
 
   const container = document.getElementById("questions-container");
@@ -85,6 +86,7 @@ window.onload = () => {
 
     questions.forEach((q, index) => {
       const selected = document.querySelector(`input[name="question${index}\"]:checked`);
+      var tab = 
       console.log(`Question ${index + 1}: sélectionné = ${selected ? selected.value : 'aucun'}, correct = ${q.reponse}`);
       if (selected && selected.value === q.reponse) {
         score++;
@@ -101,6 +103,7 @@ window.onload = () => {
       boutonFormulaire.classList.remove("hidden");
       boutonReessayer.classList.add("hidden");
       boutonValider.classList.add("hidden");
+      document.getElementById("brute-force-btn").classList.add("hidden");
     } else {
       resultat.textContent = `❌ Vous avez obtenu ${taux}%. Réessayez.`;
       boutonFormulaire.classList.add("hidden");
@@ -110,7 +113,8 @@ window.onload = () => {
   });
 };
 
- //modal
+
+//modal
 
  window.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('modal');
@@ -119,5 +123,57 @@ window.onload = () => {
   }
 });
 
+
 //bouton brute force
+
+document.getElementById("brute-force-btn").addEventListener("click", () => {
+  bruteForceTest();
+  document.getElementById("brute-force-btn").classList.add("hidden");
+});
+
+function bruteForceTest() {
+  const totalQuestions = questions.length;
+  let allAnswers = [];
+  
+  questions.forEach((q, index) => {
+      let questionAnswers = [];
+      q.reponses.forEach((reponse) => {
+          questionAnswers.push(`Q${q.qid}.r${reponse.rid}`);
+      });
+      allAnswers.push(questionAnswers);
+  });
+
+  let allCombinations = cartesianProduct(allAnswers);
+  let highestScore = 0;
+  let bestCombination = [];
+
+  allCombinations.forEach((combination) => {
+      let score = 0;
+      combination.forEach((answer, index) => {
+          const input = document.querySelector(`input[value=\"${answer}\"]`);
+          if (input) {
+              input.checked = true;
+          }
+          if (answer === questions[index].reponse) {
+              score++;
+          }
+      });
+      if (score > highestScore) {
+          highestScore = score;
+          bestCombination = combination;
+      }
+  });
+
+  bestCombination.forEach((answer) => {
+      const input = document.querySelector(`input[value=\"${answer}\"]`);
+      if (input) {
+          input.checked = true;
+      }
+  });
+  document.getElementById("valider").click();
+}
+
+function cartesianProduct(arr) {
+  return arr.reduce((a, b) => a.flatMap(d => b.map(e => [d, e].flat())));
+}
 

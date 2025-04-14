@@ -1,6 +1,5 @@
-document.getElementById('envoyer-btn').addEventListener('click', function (event) {
-    event.preventDefault();
-  
+document.getElementById('envoyer-mail').addEventListener('click', function () {
+
     if (validateForm()) {
         const nom = document.getElementById('nom').value.trim();
         const prenom = document.getElementById('prenom').value.trim();
@@ -10,10 +9,14 @@ document.getElementById('envoyer-btn').addEventListener('click', function (event
         const reponses = { nom, prenom, email, message };
         localStorage.setItem('reponses', JSON.stringify(reponses));
 
-        document.getElementById('bonjour-message').innerText = `Bonjour ${prenom} !`;
-        document.getElementById('my_modal').showModal();
-    }
+        const mailtoLink = `mailto:glyneth.lawrence@gmail.com?subject=Résultats du Questionnaire&body=Nom: ${nom}%0D%0APrénom: ${prenom}%0D%0AEmail: ${email}%0D%0AMessage: ${message}`;
+        window.location.href = mailtoLink;
+}});
+
+document.getElementById('close-btn').addEventListener('click', function() {
+    window.location.href = 'index.html';
 });
+
   
 function validateForm() {
     const nom = document.getElementById('nom').value.trim();
@@ -42,30 +45,3 @@ function validateForm() {
 
     return true;
 }
-
-
-document.querySelector('button.btn').addEventListener('click', function (event) {
-    event.preventDefault();
-
-    if (validateForm()) {
-      my_modal.showModal(); 
-    }
-});
-
-document.getElementById('close-btn').addEventListener('click', function() {
-    window.location.href = 'index.html';
-});
-
-
-document.getElementById('envoyer-mail').addEventListener('click', function () {
-    const reponses = JSON.parse(localStorage.getItem('reponses')) || {};
-    const nom = reponses.nom || '';
-    const prenom = reponses.prenom || '';
-    const email = reponses.email || '';
-    const message = reponses.message || '';
-    const mailtoLink = `mailto:glyneth.lawrence@gmail.com?subject=Résultats du Questionnaire&body=Nom: ${nom}%0D%0APrénom: ${prenom}%0D%0AEmail: ${email}%0D%0AMessage: ${message}`;
-    window.location.href = mailtoLink;
-});
-
-    
-  
