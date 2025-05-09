@@ -120,7 +120,6 @@ function checkAnswers() {
     resultat.textContent = `🎉 Merci pour vos réponses ! Vous allez être redirigé vers le formulaire de contact.`;
     boutonFormulaire.classList.remove("hidden");
     boutonReessayer.classList.add("hidden");
-    document.getElementById("brute-force-btn").classList.add("hidden");
   } else {
     resultat.textContent = `Suite à vos réponses, vous ne souhaitez pas être contacté.`;
     boutonReessayer.classList.remove("hidden");
@@ -148,19 +147,5 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-//bouton brute force
-document.getElementById("brute-force-btn").addEventListener("click", () => {
-  bruteForceCorrectAnswers();
-});
-
-function bruteForceCorrectAnswers() {
-  
-  userResponses = [
-    "A1_2", // Entreprise
-    "A2_1", // Oui à l'informatique
-    "A3_1", // Région parisienne
-    "A4_2"  // Non au robot
-  ];
-  checkAnswers();
-}
+// Brute force functionality moved to main.js
 
