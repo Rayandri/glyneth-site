@@ -21,9 +21,9 @@ const questions = [
     qlabel: "Où êtes-vous domiciliés ?", qid: 3,
     reponses: [
       {rid: 1, rlabel: "Région parisienne"},
-      {id: 2, rlabel: "France métropolitaine"},
-      {id: 3, rlabel: "Royaume-Uni"},
-      {id: 4, rlabel: "Étranger"}
+      {rid: 2, rlabel: "France métropolitaine"},
+      {rid: 3, rlabel: "Royaume-Uni"},
+      {rid: 4, rlabel: "Étranger"}
     ],
     reponse: "Q3.r1"
   },
@@ -103,9 +103,9 @@ function checkAnswers() {
   
   const correctAnswers = [
     "A1_2", // Entreprise
-    "B2_1", // Oui à l'informatique
-    "C3_1", // Région parisienne
-    "D4_2"  // Non au robot
+    "A2_1", // Oui à l'informatique
+    "A3_1", // Région parisienne
+    "A4_2"  // Non au robot
   ];
   
   const isCorrect = userResponses.length === 4 && 
@@ -157,9 +157,9 @@ function bruteForceCorrectAnswers() {
   
   userResponses = [
     "A1_2", // Entreprise
-    "B2_1", // Oui à l'informatique
-    "C3_1", // Région parisienne
-    "D4_2"  // Non au robot
+    "A2_1", // Oui à l'informatique
+    "A3_1", // Région parisienne
+    "A4_2"  // Non au robot
   ];
   checkAnswers();
 }
