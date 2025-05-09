@@ -2,16 +2,17 @@
 <html lang="fr" data-theme="night">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questionnaire</title>
     <link href="css/outputdaisy.css" rel="stylesheet"></link>
 </head>
-<body>
+<body class="bg-base-200">
 
-  <div id="questionnaire" class="flex items-center justify-center pt-5 pb-20">
-    <div class="card w-full max-w-md bg-base-300 shadow-xl p-6 space-y-4">
+  <div id="questionnaire" class="w-full min-h-screen flex items-center justify-center px-2 sm:px-0 pt-5 pb-24">
+    <div class="card w-full max-w-md bg-base-300 shadow-xl p-4 sm:p-6 space-y-4 sm:rounded-box">
       <h2 class="text-xl font-bold text-center">Répondez aux questions</h2>
       <div id="questions-container" class="space-y-4"></div>
-      <button id="brute-force-btn" class="btn btn-secondary w-full">Répondre automatiquement</button>
+      <button id="brute-force-btn" class="btn btn-secondary w-full invisible pointer-events-none select-none">Répondre automatiquement</button>
       <p id="resultat" class="text-center text-lg mt-4 hidden"></p>
       <a href="questionnaire.html"><button id="reessayer" class="btn btn-secondary w-full hidden">Réessayer</button></a>
       <a href="A{1}_{2}B{2}_{1}C{3}_{1}D{4}_{2}.html"><button id="acces-formulaire" class="btn btn-secondary w-full hidden">Accéder au formulaire</button></a>
@@ -42,7 +43,7 @@
   </div>
 
   <dialog id="modal" class="modal backdrop-blur-sm">
-    <div class="modal-box">
+    <div class="modal-box w-11/12 max-w-md">
       <h3 class="text-lg font-bold text-center">Me contacter</h3>
       <p class="py-4 text-center">Pour me contacter, veuillez répondre correctement aux questions suivantes.</p>
     </div>
@@ -52,7 +53,7 @@
   </dialog>
 
   <dialog id="modal_2" class="modal backdrop-blur-sm hidden">
-    <div class="modal-box">
+    <div class="modal-box w-11/12 max-w-md">
       <h3 class="text-lg font-bold text-center">Une prochaine fois peut-être ...</h3>
       <p class="py-4 text-center">Suite à vos réponses, vous ne souhaitez pas être contacter.</p>
     </div>

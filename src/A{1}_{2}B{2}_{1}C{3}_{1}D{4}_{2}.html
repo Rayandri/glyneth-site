@@ -2,48 +2,49 @@
 <html lang="fr" data-theme="night">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questionnaire</title>
     <link href="css/outputdaisy.css" rel="stylesheet"></link>
 </head>
 <body>
     
   <div id="formulaire">
-    <div class="flex items-center justify-center min-h-screen pb-20">
-      <fieldset class="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box">
-        <h1 class="text-2xl underline text-center">Formulaire de contact</h1>
-        <br>
-        <label class="floating-label">
-          <span>Nom</span>
-          <input id="nom" type="text" placeholder="Nom" class="input input-md" />
-        </label>
-        <br>
-        <label class="floating-label">
-          <span>Prénom</span>
-          <input id="prenom" type="text" placeholder="Prénom" class="input input-md" />
-        </label>
-        <br>
-        <label class="floating-label">
-          <span>E-mail</span>
-          <input id="email" type="text" placeholder="email@exemple.com" class="input input-md" />
-        </label>
-        <br>
-        <label class="form-control w-full text-center">
-          <span class="label-text text-lg mb-4">Message</span>
-          <textarea id="message" class="textarea textarea-bordered h-32 w-full resize-none" placeholder="Je vous contacte pour..."></textarea>
-        </label>
-        <br>
-        <button id="envoyer-mail" class="btn btn-secondary" type="button">Envoyer par email</button>
+    <div class="flex items-center justify-center min-h-screen pb-20 px-4">
+      <fieldset class="fieldset w-full max-w-md bg-base-200 border border-base-300 p-6 rounded-box">
+        <h1 class="text-3xl font-bold underline text-center mb-6">Formulaire de contact</h1>
+        <div class="space-y-6">
+          <label class="floating-label">
+            <span class="text-lg">Nom</span>
+            <input id="nom" type="text" placeholder="Nom" class="input input-lg w-full" />
+          </label>
+          <label class="floating-label">
+            <span class="text-lg">Prénom</span>
+            <input id="prenom" type="text" placeholder="Prénom" class="input input-lg w-full" />
+          </label>
+          <label class="floating-label">
+            <span class="text-lg">E-mail</span>
+            <input id="email" type="text" placeholder="email@exemple.com" class="input input-lg w-full" />
+          </label>
+          <label class="form-control w-full text-center">
+            <span class="label-text text-xl mb-4">Message</span>
+            <textarea id="message" class="textarea textarea-bordered h-40 w-full resize-none text-lg" placeholder="Je vous contacte pour..."></textarea>
+          </label>
+          <button id="envoyer-mail" class="btn btn-secondary w-full text-lg h-14" type="button">Envoyer par email</button>
+        </div>
         <dialog id="my_modal" class="modal modal-bottom sm:modal-middle">
-          <div class="modal-box">
-            <h3 id="bonjour-message" class="text-xl font-bold underline text-center"></h3>
+          <div class="modal-box w-11/12 max-w-2xl">
+            <h3 id="bonjour-message" class="text-2xl sm:text-3xl font-bold underline text-center"></h3>
             <br>
-            <p class="py-4 text-lg text-center">J'ai bien reçu votre message, je vous recontacte au plus vite. À bientôt !</p>
+            <p class="py-6 text-xl sm:text-2xl text-center">J'ai bien reçu votre message, je vous recontacte au plus vite. À bientôt !</p>
             <div class="modal-action">
               <form method="dialog">
-                <button id="close-btn"class="btn">Close</button>
+                <button id="close-btn" class="btn btn-lg min-w-[120px]">Fermer</button>
               </form>
             </div>
           </div>
+          <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+          </form>
         </dialog>
       </fieldset>
     </div>
@@ -51,7 +52,7 @@
 
   <div class="toast toast-top toast-center z-50 hidden" id="error-toast">
     <div class="alert alert-error shadow-lg">
-      <span id="toast-message">Erreur</span>
+      <span id="toast-message" class="text-lg">Erreur</span>
     </div>
   </div>
 
